@@ -8,17 +8,47 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State
+    private var message = "You are Awesome!"
+    
+    @State private var awesomeTint = Color.red
+    @State private var greatTint = Color.red
+    
     var body: some View {
-        VStack {
+        VStack (spacing: 6) {
+            
+            Spacer()
+            
             Image(systemName: "swift")
                 .resizable()
                 .scaledToFit()
                 .foregroundStyle(.orange)
-            Text("You are Awesome!")
-                .foregroundStyle(.red)
+                .frame(width: 200, height: 200)
+            Text(message)
                 .font(.largeTitle)
+                .fontWeight(.ultraLight)
+            
+            Spacer()
+            
+            HStack {
+                Button("Awesome!") {
+                    message = "Awesome!"
+                    print(message)
+                    awesomeTint = Color.mint
+                }
+                .tint(awesomeTint)
+                Button("Great!") {
+                    message = "Great!"
+                    print(message)
+                    greatTint = Color.mint
+                }
+                .tint(greatTint)
+            }
+            .buttonStyle(.borderedProminent)
+            .font(.title2)
         }
         .padding()
+        
     }
 }
 
